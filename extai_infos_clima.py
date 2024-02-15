@@ -1,7 +1,10 @@
+from dotenv import load_dotenv
 import os
 from os.path import join
 import pandas as pd
 from datetime import datetime, timedelta
+
+load_dotenv()
 
 #intervalo de datas
 data_inicio = datetime.today()
@@ -13,7 +16,7 @@ data_fim = data_fim.strftime('%Y-%m-%d')
 
 #dados para api
 city = 'Boston'
-key = 'MDA4XVTT26Q5486E5F5YQ93YW'
+key = os.getenv("KEY")
 
 URL = join('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/'
            f'{city}/{data_inicio}/{data_fim}?unitGroup=metric&include=days&key={key}&contentType=csv')
